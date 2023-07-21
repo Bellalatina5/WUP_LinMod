@@ -116,22 +116,23 @@ The 95% prediction interval is from -1.7 to 3.1 for SIM score. Which proves that
 
 ## Model 3 SIM~ARM+GRIP
 
-### Graphical results
+### Results
+
+### Numerical results 
+
+```{r}
+cor(SIMS~ARM+GRIP, data=data)
+```
+
+### Inferential (Build 2 - dimentional model.3)
 
 ```{r}
 model.3 <- lm(SIMS~ARM+GRIP,data=data)
 summary(model.3)
 ```
 
+As arm plus grip strength goes up, the simulation  indicated that the SIM goes up as well, we reject the null hypothesis because 
 
-### Numerical results (cor)
-
-`
-  
-### Inferential  (Build 2-dimentional model.3)
-
-#### predict model.3 at target point
-  
 
 ## Comparing nested models ANOVA Test
 
@@ -140,3 +141,15 @@ summary(model.3)
 
 ## Informally compare Model.1 with model.2
 
+```{r}
+anova(model.3,model.1)
+```
+The p value is .00000499, thus I reject the null hypothesis. Model proces to be better than model two because the RSS for model 1 is smaller. 
+
+```{r}
+anova(model.3,model.2)
+```
+Model three is smaller than model two because the RSS for model three is smaller. 
+
+# Discussion and Conclusion 
+In conclusion, model 3 is the best because it has a smaller RSS than both model 1 and model 2. Model 1 is better than model 2., but in order for it to be better, it would need a smaller RSS. In the end, we are rejecting the null hypothesis and model 3 is the best overall. 
